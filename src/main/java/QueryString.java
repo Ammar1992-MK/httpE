@@ -1,15 +1,23 @@
 public class QueryString {
 
     private final String parameterValue;
+    private final String parameterName;
 
     public QueryString(String queryString){
 
         int equalPos = queryString.indexOf("=");
+        parameterName = queryString.substring(0, equalPos);
         parameterValue = queryString.substring(equalPos+1);
-
+        System.out.println(parameterName);
     }
 
     public String getParameter(String status) {
-        return parameterValue;
+
+        if(status.equals(parameterName)){
+
+            return parameterValue;
+        }else{
+            return null;
+        }
     }
 }

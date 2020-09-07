@@ -21,10 +21,19 @@ public class QueryStringTest {
 
     @Test
 
-    void shouldReturNullForMissingParameters(){
+    void shouldReturnNullForMissingParameters(){
         QueryString queryString = new QueryString("body=Hello");
         assertNull(queryString.getParameter("status"));
 
+    }
+
+    @Test
+
+    void shouldSupportMultipleParameters(){
+
+        QueryString queryString = new QueryString("status=200&body=Hello");
+        assertEquals("200", queryString.getParameter("status"));
+        assertEquals("Hello", queryString.getParameter("body"));
     }
 
 }
